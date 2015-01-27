@@ -46,6 +46,7 @@ class CommanderServiceProvider extends ServiceProvider {
      */
     protected function registerCommandBus()
     {
+        // This was changed by Jason Michels for use until we switch to Laravel 5
         $this->app->bind('Laracasts\Commander\CommandBus', function ()
         {
             return $this->app->make('Laracasts\Commander\ValidationCommandBus');
