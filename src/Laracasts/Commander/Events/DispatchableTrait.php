@@ -3,6 +3,12 @@
  use App;
 
  trait DispatchableTrait {
+     /**
+      * The Dispatcher instance.
+      *
+      * @var Dispatcher
+      */
+     protected $dispatcher;
 
      /**
       * Dispatch all events for an entity.
@@ -17,10 +23,20 @@
      /**
       * Get the event dispatcher.
       *
-      * @return \Laracasts\Commander\Events\EventDispatcher
+      * @return Dispatcher
       */
      public function getDispatcher()
      {
-         return App::make('Laracasts\Commander\Events\EventDispatcher');
+         return $this->dispatcher ?: App::make('Laracasts\Commander\Events\EventDispatcher');
+     }
+     
+     /**
+      * Set the dispatcher instance.
+      *
+      * @param mixed $dispatcher
+      */
+     public function setDispatcher($dispatcher)
+     {
+         $this->dispatcher = $dispatcher;
      }
  }
